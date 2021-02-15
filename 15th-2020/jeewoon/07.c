@@ -7,37 +7,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-int solution2(int s[], size_t s_len, int e[], size_t e_len) {
-	int answer = 0, N = s_len;
-	int i, j, tmp, e1 = -1, e2 = -1;
-
-	for (i = 0; i < N; i++) {
-		for (j = 0; j < N - 1; j++) {
-			if ((e[j] > e[j + 1] || e[j] == e[j + 1] && s[j] > s[j + 1])) {
-				tmp = s[j];
-				s[j] = s[j + 1];
-				s[j + 1] = tmp;
-				tmp = e[j];
-				e[j] = e[j + 1];
-				e[j + 1] = tmp;
-			}
-		}
-	}
-
-	for (i = 0; i < N; i++) {
-		if (e1 <= s[i]) {
-			e1 = e[i];
-			answer++;
-		}
-		else if (e2 <= s[i]) {
-			e2 = e1;
-			e1 = e[i];
-			answer++;
-		}
-	}
-	return answer;
-}
-
 int solution(int s[], size_t s_len, int e[], size_t e_len) {
 	int answer = 0, tmp_s, tmp_e;
 	int e1 = -1, e2 = -1;
