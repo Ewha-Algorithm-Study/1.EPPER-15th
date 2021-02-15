@@ -39,7 +39,7 @@ void nqueen(int lev) {
 	}
 }
 
-int solution2(int n, int k, int X[], size_t X_len, int Y[], size_t Y_len) {
+int solution(int n, int k, int X[], size_t X_len, int Y[], size_t Y_len) {
 	int answer = 0;
 	int i, j;
 	N = n;
@@ -48,38 +48,6 @@ int solution2(int n, int k, int X[], size_t X_len, int Y[], size_t Y_len) {
 	nqueen(0);
 	answer = count;
 	return answer;
-}
-
-int n, res;
-int map[15];
-
-bool isPromising(int r, int c) {
-	for (int i = 1; i < r; i++) {
-		if (map[i] == c)
-			return false;
-		if (abs(r - i) == abs(map[i] - c))
-			return false;
-	}
-	return true;
-}
-
-void dfs(int r, int c) {
-	map[r] = c;
-	if (r == n) {
-		res++;
-	}
-	else {
-		for (int i = 1; i <= n; i++) {
-			if (isPromising(r + 1, i)) {
-				dfs(r + 1, i);
-			}
-		}
-	}
-	map[r] = 0;
-}
-
-int solution(int n, int k, int X[], size_t X_len, int Y[], size_t Y_len) {
-	
 }
 
 int main(void) {
